@@ -13,8 +13,18 @@ public class Soma {
             return String.format("%.2f", soma);
 
         } catch (NumberFormatException nfe) {
+
+            if(Double.parseDouble(a) < 0){
+                throw new BadRequestException(String.format("Parâmetro inválido: %s", a));
+            } else if(Double.parseDouble(b) < 0){
+                throw new BadRequestException(String.format("Parâmetro inválido: %s", b));
+            } 
+
             throw new BadRequestException(String.format("Parâmetros inválidos: %s e %s.", a, b));
+
+
         }
     }
+
 
 }
